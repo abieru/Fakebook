@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="shortcut icon" href="{% static 'core/img/code-solid.svg' %}">
+		<link rel="stylesheet" href="{% static 'core/vendor/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+		<script src="https://unpkg.com/scrollreveal"></script>
+	</head>
+	<body>
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark border-bottom" style="background-color: #3b5998;">
+		  <div class="container">
+		    <a class="navbar-brand" href="{% url 'post:posts' %}">
+				<i class="fab fa-facebook-square fa-lg"></i>
+		    </a>   
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="input-group input-group-sm mb-3 my-2 my-lg-0" style="width: 50%">
+				  <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2">
+				  <div class="input-group-append">
+				    <button class="btn btn-light" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+				  </div>
+				</div>
+		      <ul class="navbar-nav ml-auto">
+		        {% if request.user.is_staff %}
+		        <li class="nav-item active">
+		          <a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Perfil</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#"><i class="fas fa-users"></i> Amigos</a>
+		        </li>
+		        {% else %}
+		          <li class="nav-item active">
+		            <a class="btn btn-outline-light"  href="#">Registrarse</a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link" href="#">Iniciar Sesión</a>
+		          </li>
+		        {% endif %}
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+
+		{% block content %}{% endblock %}				
+		<hr class="container">
+		<footer class="mb-auto py-3" id="copy">
+			<div class="container p-3">
+				<div class="row">
+					<div class="col-md-5 ml-auto">
+						<h3 class="d-block">Contactos.</h3>
+						<a class="text-dark" href="https://github.com/4bi3l">
+							<span style="font-size: 30px; color: Dodgerblue">
+								<i class="fab fa-github mr-1"></i>
+							</span>
+						</a>
+						<a class="text-dark" href="https://www.linkedin.com/in/abiel-arcila-9a9304146">
+							<span style="font-size: 30px; color: Dodgerblue">
+								<i class="fab fa-linkedin mr-1"></i>
+							</span>
+						</a>
+						<a class="text-dark" href="https://t.me/abiel13">
+							<span style="font-size: 30px; color: Dodgerblue">
+								<i class="fab fa-telegram mr-1"></i>
+							</span>
+						</a>
+
+						<a class="text-dark" href="https://paypal.me/abieldev">
+							<span style="font-size: 30px; color: Dodgerblue">
+								<i class="fab fa-cc-paypal mr-1"></i>
+							</span>
+						</a>
+						<hr>
+						{% block terceros %}{% endblock %}
+						{% verbatim %}
+						<p>Copyright (c) {{ fecha.getFullYear() }} Copyright <a class="text-primary" href="#">AbielDev.io</a> All Rights Reserved.</p>
+						{% endverbatim %}
+					</div>
+					
+				</div>
+			</div>
+		</footer>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>	
+		<script defer src="{% static 'core/fontawesome/js/all.js' %}"></script>
+		<script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'core/vendor/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'core/js/main.js' %}"></script>
+		{% block js %}{% endblock %}
+		<script>
+			new Vue({
+				el: "#copy",
+				data: {
+					fecha: new Date()
+				}
+			});
+		</script>
+	</body>
+</html>
