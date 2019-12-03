@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Perfil{% endblock %}
+{% block content %}
+<header class="py-5 bg-image-full" style="background-image: url('{% static 'core/img/wallpaperExchange1.png' %}'); width: 100%">
+  <img class="img-thumbnail d-block mx-auto" src="{% static 'core/img/abiel.jpg' %}" alt="" style="width: 40%">
+</header>
+<hr>
+  <section class="py-2">
+    <div class="container">
+      <h1>AbielxX.</h1>
+      <p class="lead">Anarquista, liberal, feminista y fan de cs 1.6.</p>
+      <p>hola me llamo abiel y esta es mi descripción ahora pondre texto sin sentidoAliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet..</p>
+    </div>
+  </section>
+<hr>  
+<main role="main">
+  <div class="container">
+    <div class="row mt-3 mb-5">
+      <div class="col-md-9 mx-auto">
+        <h3>perfil</h3>
+        <form action="" enctype=multipart/form-data method="post">{% csrf_token %}
+            <div class="text-center">
+                {{ form.as_p }}
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" value="Subir"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% include 'publicaciones/includes/menu_post.html' %}
+{% endblock %}

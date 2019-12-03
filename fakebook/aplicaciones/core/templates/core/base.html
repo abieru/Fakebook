@@ -11,39 +11,44 @@
 		<script src="https://unpkg.com/scrollreveal"></script>
 	</head>
 	<body>
-		<nav class="navbar sticky-top navbar-expand-lg navbar-dark border-bottom" style="background-color: #3b5998;">
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #3b5998;">
 		  <div class="container">
 		    <a class="navbar-brand" href="{% url 'post:posts' %}">
 				<i class="fab fa-facebook-square fa-lg"></i>
-		    </a>   
+		    </a>
+		    <!--el search-->
+			<div class="input-group input-group-sm mb-2 my-2 my-lg-0" style="width: 62%">
+			  <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2">
+			  <div class="input-group-append">
+			    <button class="btn btn-light" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+			  </div>
+			</div>
+
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
+		      <i class="fas fa-chevron-circle-down"></i>
 		    </button>
 
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<div class="input-group input-group-sm mb-3 my-2 my-lg-0" style="width: 50%">
-				  <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2">
-				  <div class="input-group-append">
-				    <button class="btn btn-light" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-				  </div>
-				</div>
 		      <ul class="navbar-nav ml-auto">
-		        {% if request.user.is_staff %}
+		        {% if request.user.is_authenticated %}
 		        <li class="nav-item active">
-		          <a class="nav-link" href="#"><i class="fas fa-user-circle"></i> Perfil</a>
+		          <a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user-circle"></i> Perfil</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+		          <a class="nav-link" href="#"><i class="fab fa-facebook-messenger"></i> chats</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="#"><i class="fas fa-users"></i> Amigos</a>
 		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-external-link-alt"></i> Salir</a>
+		        </li>
 		        {% else %}
 		          <li class="nav-item active">
-		            <a class="btn btn-outline-light"  href="#">Registrarse</a>
+		            <a class="btn btn-outline-light"  href="{% url 'register' %}">Registro</a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link" href="#">Iniciar Sesión</a>
+		            <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-out-alt"></i> Iniciar Sesión</a>
 		          </li>
 		        {% endif %}
 		      </ul>

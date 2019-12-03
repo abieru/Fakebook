@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}AbielDev | Publicación{% endblock %}
+{% block title %}Publicación{% endblock %}
 {% block content %}
 {% include 'publicaciones/includes/menu_post.html' %}
 <div class="container mt-5">
@@ -9,9 +9,9 @@
     <div class="card bg-light mb-4 pr-1 pl-1 pb-1">
       <div class="card-body">
         <h5 class="card-title">
-              {% if post.title %}
-              {{post.title}} | {% endif %}<!--<img src="" class="img-fluid profile-avatar rounded" alt="img 2" style="width: 3%">-->
-    		<span class="badge badge-dark">{{post.author}}</span></h5> 
+          <!--<img src="" class="img-fluid profile-avatar rounded" alt="img 2" style="width: 3%">-->
+    		  <span class="badge badge-dark">{{post.author}}</span>
+      </h5> 
         {% if post.content %}
         <p class="card-text">{{post.content|safe}}</p>
         {% endif %}

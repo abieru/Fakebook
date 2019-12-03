@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['192.168.0.104']
 # Application definition
 
 INSTALLED_APPS = [
+    'aplicaciones.registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,3 +125,17 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL =  '/media/'
+
+#auth redirets
+#LOGIN_REDIRECT_URL = 'post:posts'
+
+LOGOUT_REDIRECT_URL = 'post:posts'
+
+#Emails
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+else:
+    # aqui configurar un email para producción
+    pass
