@@ -7,3 +7,5 @@ class Profile(models.Model):
 	avatar = models.ImageField(upload_to='profiles', null=True, blank=True)
 	portada = models.ImageField(upload_to='portadas', null=True, blank=True)
 	bio = models.TextField(verbose_name="Biografia", null=True, blank=True)
+
+

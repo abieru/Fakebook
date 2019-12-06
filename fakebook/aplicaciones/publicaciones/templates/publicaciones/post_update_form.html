@@ -9,7 +9,7 @@
       <div class="col-md-9 mx-auto">
         {% if 'ok' in request.GET %}
         <div class="alert alert-success" role="alert">
-           Edición completada! <a class="alert-link" href="{% url 'post:post' post.author post.id post.title|slugify %}">ver el resultado</a>
+           Edición completada! <a class="alert-link" href="{% url 'post:post' post.author post.id %}">ver el resultado</a>
         </div>
         {% endif %}
             <form action="" enctype=multipart/form-data method="post">{% csrf_token %}
